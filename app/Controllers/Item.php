@@ -205,9 +205,9 @@ class Item extends BaseController
         return redirect()->to('/user/dashboard')->with('error', 'Something went wrong.');
     }
 
-    public function acceptExchange(): \CodeIgniter\HTTP\RedirectResponse
+    public function acceptExchange($exchange_id): \CodeIgniter\HTTP\RedirectResponse
     {
-        $exchange_id = $this->request->getPost('exchange_id');
+
 
         $db = db_connect();
 
@@ -256,9 +256,8 @@ class Item extends BaseController
         return redirect()->back()->with('error', 'Exchange not found.');
     }
 
-    public function declineExchange(): \CodeIgniter\HTTP\RedirectResponse
+    public function declineExchange($exchange_id): \CodeIgniter\HTTP\RedirectResponse
     {
-        $exchange_id = $this->request->getPost('exchange_id');
         $db = db_connect();
 
         $sql = 'DELETE FROM exchanges WHERE id = :exchange_id:';
