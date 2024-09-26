@@ -48,6 +48,16 @@ class Admin extends BaseController
             'role' => 'admin',
         ]);
         $data['users']=$query->getResultObject();
+        $sql= 'SELECT * FROM usage_statistics';
+        $query= $db->query($sql, []);
+        $data['statistics']=$query->getResultObject();
+        $sql = 'SELECT COUNT(*) as user_count FROM users WHERE id <> :id: AND role <> :role:';
+        $query = $db->query($sql, [
+            'id'   => session()->get('user_id'),
+            'role' => 'admin',
+        ]);
+        $data['user_count'] = $query->getRow()->user_count;
+
         return view('Dashboard/infoUser_view',$data);
     }
 
@@ -59,7 +69,7 @@ class Admin extends BaseController
     /**
      * @throws ReflectionException
      */
-    public function  createCateg()
+    public function  createCateg(): \CodeIgniter\HTTP\RedirectResponse
     {
         $categoryModel = new CategoryModel();
         $rules = [
