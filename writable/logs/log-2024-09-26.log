@@ -863,3 +863,471 @@ WARNING - 2024-09-26 17:29:57 --> [DEPRECATED] explode(): Passing null to parame
 INFO - 2024-09-26 17:30:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-09-26 17:36:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-09-26 17:36:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:22:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:23:27 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 21:23:59 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'items WHERE id = '15'' at line 1 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT user_id ...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT user_id ...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT user_id ...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(243): CodeIgniter\Database\BaseConnection->query('SELECT user_id ...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('8')
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 21:23:59 --> Call to a member function getRow() on bool
+in APPPATH/Controllers/Item.php on line 246.
+ 1 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('8')
+ 2 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 3 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:24:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:24:13 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:24:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 21:24:17 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'items WHERE id = '15'' at line 1 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT user_id ...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT user_id ...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT user_id ...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(243): CodeIgniter\Database\BaseConnection->query('SELECT user_id ...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('8')
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 21:24:17 --> Call to a member function getRow() on bool
+in APPPATH/Controllers/Item.php on line 246.
+ 1 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('8')
+ 2 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 3 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:26:19 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:26:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:26:23 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:26:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:26:38 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:26:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:26:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 21:26:53 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'items WHERE id = '16'' at line 1 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT user_id ...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT user_id ...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT user_id ...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(243): CodeIgniter\Database\BaseConnection->query('SELECT user_id ...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 21:26:53 --> Call to a member function getRow() on bool
+in APPPATH/Controllers/Item.php on line 246.
+ 1 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+ 2 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 3 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:29:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 21:29:40 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'items WHERE id = '16'' at line 1 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT user_id ...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT user_id ...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT user_id ...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(243): CodeIgniter\Database\BaseConnection->query('SELECT user_id ...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 21:29:40 --> Call to a member function getRow() on bool
+in APPPATH/Controllers/Item.php on line 246.
+ 1 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+ 2 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 3 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:31:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 21:31:22 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'items WHERE id = '16'' at line 1 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT user_id ...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT user_id ...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT user_id ...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(243): CodeIgniter\Database\BaseConnection->query('SELECT user_id ...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+INFO - 2024-09-26 21:31:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 21:31:33 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'items WHERE id = '16'' at line 1 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT user_id ...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT user_id ...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT user_id ...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(243): CodeIgniter\Database\BaseConnection->query('SELECT user_id ...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 21:31:33 --> Call to a member function getResultObject() on bool
+in APPPATH/Controllers/Item.php on line 245.
+ 1 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+ 2 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 3 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:32:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-26 21:32:15 --> Undefined property: stdClass::$user_id
+in APPPATH/Controllers/Item.php on line 246.
+ 1 APPPATH/Controllers/Item.php(246): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$user_id', 'APPPATH/Controllers/Item.php', 246)
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->acceptExchange('9')
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:33:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:33:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:33:22 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:40:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:41:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 21:41:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:41:02 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:42:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:42:19 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 21:42:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-09-26 21:42:46 --> [DEPRECATED] explode(): Passing null to parameter #2 ($string) of type string is deprecated in APPPATH/Views/Dashboard/infoUser_view.php on line 50.
+ 1 APPPATH/Views/Dashboard/infoUser_view.php(50): explode(',', null)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/Dashboard/infoUser_view.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('Dashboard/infoUser_view', [], true)
+ 5 APPPATH/Controllers/User.php(50): view('Dashboard/infoUser_view', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\User->dash('ROOTPATH/public')
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:01:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:01:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-26 22:01:06 --> Too few arguments to function App\Controllers\Item::getHistory(), 0 passed in /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php on line 934 and exactly 1 expected
+in APPPATH/Controllers/Item.php on line 298.
+ 1 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 2 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 3 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:03:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:04:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:06:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:06:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:06:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:08:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:08:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:09:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:10:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:10:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 22:10:31 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id
+            ORDER BY eh.exchange_date DESC' at line 5 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT eh.excha...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT eh.excha...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT eh.excha...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(309): CodeIgniter\Database\BaseConnection->query('SELECT eh.excha...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 22:10:31 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id
+            ORDER BY eh.exchange_date DESC' at line 5
+in SYSTEMPATH/Database/BaseConnection.php on line 645.
+ 1 APPPATH/Controllers/Item.php(309): CodeIgniter\Database\BaseConnection->query('SELECT eh.exchange_date, u1.name AS previous_owner, u2.name AS new_owner
+            FROM exchange_history eh
+            JOIN users u1 ON eh.previous_owner_id = u1.id
+            JOIN users u2 ON eh.new_owner_id = u2.id
+            WHERE eh.item_id = :item_id
+            ORDER BY eh.exchange_date DESC', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 22:11:04 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id
+            ORDER BY eh.exchange_date ASC' at line 5 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT eh.excha...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT eh.excha...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT eh.excha...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(309): CodeIgniter\Database\BaseConnection->query('SELECT eh.excha...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 22:11:04 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id
+            ORDER BY eh.exchange_date ASC' at line 5
+in SYSTEMPATH/Database/BaseConnection.php on line 645.
+ 1 APPPATH/Controllers/Item.php(309): CodeIgniter\Database\BaseConnection->query('SELECT eh.exchange_date, u1.name AS previous_owner, u2.name AS new_owner
+            FROM exchange_history eh
+            JOIN users u1 ON eh.previous_owner_id = u1.id
+            JOIN users u2 ON eh.new_owner_id = u2.id
+            WHERE eh.item_id = :item_id
+            ORDER BY eh.exchange_date ASC ', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:11:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-26 22:11:22 --> syntax error, unexpected identifier "item_id"
+in APPPATH/Controllers/Item.php on line 309.
+ 1 SYSTEMPATH/Autoloader/Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH/Controllers/Item.php')
+ 2 SYSTEMPATH/Autoloader/Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Item')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Item')
+ 4 SYSTEMPATH/CodeIgniter.php(892): class_exists('\\App\\Controllers\\Item', true)
+ 5 SYSTEMPATH/CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 22:11:40 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id' at line 5 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT eh.excha...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT eh.excha...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT eh.excha...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(308): CodeIgniter\Database\BaseConnection->query('SELECT eh.excha...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 22:11:40 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id' at line 5
+in SYSTEMPATH/Database/BaseConnection.php on line 645.
+ 1 APPPATH/Controllers/Item.php(308): CodeIgniter\Database\BaseConnection->query('SELECT eh.exchange_date, u1.name AS previous_owner, u2.name AS new_owner
+            FROM exchange_history eh
+            JOIN users u1 ON eh.previous_owner_id = u1.id
+            JOIN users u2 ON eh.new_owner_id = u2.id
+            WHERE eh.item_id = :item_id', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:12:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:13:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 22:13:10 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id
+            ORDER BY eh.exchange_date DESC' at line 5 in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT eh.excha...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT eh.excha...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT eh.excha...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(309): CodeIgniter\Database\BaseConnection->query('SELECT eh.excha...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 22:13:10 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':item_id
+            ORDER BY eh.exchange_date DESC' at line 5
+in SYSTEMPATH/Database/BaseConnection.php on line 645.
+ 1 APPPATH/Controllers/Item.php(309): CodeIgniter\Database\BaseConnection->query('SELECT eh.exchange_date, u1.name AS previous_owner, u2.name AS new_owner
+            FROM exchange_history eh
+            JOIN users u1 ON eh.previous_owner_id = u1.id
+            JOIN users u2 ON eh.new_owner_id = u2.id
+            WHERE eh.item_id = :item_id
+            ORDER BY eh.exchange_date DESC', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:14:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-09-26 22:14:27 --> mysqli_sql_exception: Unknown column 'u1.name' in 'field list' in /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php:295
+Stack trace:
+#0 /opt/lampp/htdocs/me/tak_tak/system/Database/MySQLi/Connection.php(295): mysqli->query('SELECT eh.excha...', 0)
+#1 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT eh.excha...')
+#2 /opt/lampp/htdocs/me/tak_tak/system/Database/BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT eh.excha...')
+#3 /opt/lampp/htdocs/me/tak_tak/app/Controllers/Item.php(312): CodeIgniter\Database\BaseConnection->query('SELECT eh.excha...', Array)
+#4 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+#5 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+#6 /opt/lampp/htdocs/me/tak_tak/system/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 /opt/lampp/htdocs/me/tak_tak/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#8 /opt/lampp/htdocs/me/tak_tak/system/Commands/Server/rewrite.php(47): require_once('/opt/lampp/htdo...')
+#9 {main}
+CRITICAL - 2024-09-26 22:14:27 --> Unknown column 'u1.name' in 'field list'
+in SYSTEMPATH/Database/BaseConnection.php on line 645.
+ 1 APPPATH/Controllers/Item.php(312): CodeIgniter\Database\BaseConnection->query('SELECT eh.exchange_date, u1.name AS previous_owner, u2.name AS new_owner
+            FROM exchange_history eh
+            JOIN users u1 ON eh.previous_owner_id = u1.id
+            JOIN users u2 ON eh.new_owner_id = u2.id
+            WHERE eh.item_id = ?
+            ORDER BY eh.exchange_date DESC', [...])
+ 2 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 3 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 4 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:15:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-26 22:15:07 --> Invalid file: "item_history.php"
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('item_history.php')
+ 2 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('item_history', [], true)
+ 3 APPPATH/Controllers/Item.php(315): view('item_history', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 5 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 6 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:15:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-26 22:15:25 --> Undefined variable $item
+in APPPATH/Views/item/item_history.php on line 6.
+ 1 APPPATH/Views/item/item_history.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $item', 'APPPATH/Views/item/item_history.php', 6)
+ 2 SYSTEMPATH/View/View.php(213): include('APPPATH/Views/item/item_history.php')
+ 3 SYSTEMPATH/View/View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1177): CodeIgniter\View\View->render('/item/item_history', [], true)
+ 5 APPPATH/Controllers/Item.php(315): view('/item/item_history', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(934): App\Controllers\Item->getHistory()
+ 7 SYSTEMPATH/CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Item))
+ 8 SYSTEMPATH/CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('FCPATH/index.php')
+INFO - 2024-09-26 22:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:17:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-26 22:20:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
