@@ -18,28 +18,37 @@ class User extends BaseController
         return redirect()->to('/auth/login');
     }
 
-    public function dash(): string
-    {
-        $id = session()->get('user_id');
+        public function dash(): string
+        {
+            $id = session()->get('user_id');
 
-        $userModel = new UserModel();
-        $data['user'] = $userModel->find($id);
+            $userModel = new UserModel();
+            $data['user'] = $userModel->find($id);
 
-        $db = db_connect();
+            $db = db_connect();
 
-        $sql = 'SELECT items.*, GROUP_CONCAT(item_photos.photo_url) AS photos 
-            FROM items 
-            LEFT JOIN item_photos ON items.id = item_photos.item_id 
-            WHERE items.user_id = :user_id:
-            GROUP BY items.id';
+            $sql = 'SELECT items.*, GROUP_CONCAT(item_photos.photo_url) AS photos 
+                FROM items 
+                LEFT JOIN item_photos ON items.id = item_photos.item_id 
+                WHERE items.user_id = :user_id:
+                GROUP BY items.id';
+            $query = $db->query($sql, ['user_id' => $id]);
+            $data['items'] = $query->getResultObject();
 
-        $query = $db->query($sql, [
-            'user_id' => $id,
-        ]);
+            $exchange_sql = 'SELECT e.id, e.offered_item_id, e.requested_item_id, e.exchange_date, e.status,
+                                i1.title AS offered_item_title, i2.title AS requested_item_title,
+                                u.username AS owner_name
+                         FROM exchanges e
+                         JOIN items i1 ON e.offered_item_id = i1.id
+                         JOIN items i2 ON e.requested_item_id = i2.id
+                         JOIN users u ON i2.user_id = u.id
+                         WHERE i1.user_id = :user_id: OR i2.user_id = :user_id:';
+            $exchange_query = $db->query($exchange_sql, ['user_id' => $id]);
+            $data['exchanges'] = $exchange_query->getResultObject();
 
-        $data['items'] = $query->getResultObject();
-        return view('Dashboard/infoUser_view', $data);
-    }
+            return view('Dashboard/infoUser_view', $data);
+        }
+
 
 
     public function getUpdate(): string

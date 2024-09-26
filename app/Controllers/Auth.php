@@ -13,8 +13,6 @@ class  Auth extends BaseController
     {
         $userModel = new UserModel();
         $rules = [
-            'user_id'=>'',
-            'category_id'=>'required',
             'username' => 'required|max_length[30]|alpha_space',
             'password' => 'required|max_length[255]|min_length[8]',
             'email'    => [

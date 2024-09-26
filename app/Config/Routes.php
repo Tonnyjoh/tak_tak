@@ -62,10 +62,14 @@ if(session()->get('role') == 'admin'){
 if(session()->get('isLoggedIn') && session()->get('role') == 'client'){
     $routes->get('/item/create', 'Item::getFormCreate');
     $routes->post('/item/create', 'Item::create');
-    $routes->get('/item/update/(:segment)', 'Item::getFormUpdate/$1');
+    $routes->post('/item/update/', 'Item::getFormUpdate');
     $routes->post('/item/update', 'Item::update');
     $routes->get('/item/delete/(:segment)', 'Item::delete/$1');
+    $routes->get('/item/listItems', 'Item::getListItems');
+    $routes->post('/item/exchange', 'Item::exchange');
 
+    $routes->post('/exchange/accept', 'Item::acceptExchange');
+    $routes->post('/exchange/decline', 'Item::declineExchange');
 }
 /*$routes->get('/upload/send','Upload::send');
 $routes->post('/upload/store', 'Upload::store');*/

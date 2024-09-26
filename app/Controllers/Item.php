@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\CategoryModel;
+use App\Models\ExchangeModel;
 use App\Models\ItemModel;
 use App\Models\ItemPhotoModel;
 use ReflectionException;
@@ -41,10 +42,10 @@ class Item extends BaseController
         return redirect()->to('/user/dashboard')->with('error', 'Something went wrong.');
     }
 
-    public function getFormUpdate($id): string
+    public function getFormUpdate(): string
     {
         $itemModel = new ItemModel();
-        $data['item'] = $itemModel->find($id);
+        $data['item'] = $itemModel->find($this->request->getPost("item_id"));
         return view('item/formUpdate', $data);
     }
 
@@ -148,5 +149,124 @@ class Item extends BaseController
 
         return redirect()->back()->with('success', 'Files uploaded successfully.');
     }
+
+    public function getListItems(): string
+    {
+        $userId = session()->get('user_id');
+        $db = db_connect();
+
+        $sqlItems = 'SELECT items.*, GROUP_CONCAT(item_photos.photo_url) AS photos 
+                 FROM items 
+                 LEFT JOIN item_photos ON items.id = item_photos.item_id 
+                 WHERE items.user_id != :user_id:
+                 GROUP BY items.id';
+        $queryItems = $db->query($sqlItems, [
+            'user_id' => $userId,
+        ]);
+        $items = $queryItems->getResultObject();
+
+        $sqlUserItems = 'SELECT * FROM items WHERE user_id = :user_id:';
+        $queryUserItems = $db->query($sqlUserItems, [
+            'user_id' => $userId,
+        ]);
+        $userItems = $queryUserItems->getResultObject();
+
+        return view('item/listItems', [
+            'items' => $items,
+            'userItems' => $userItems,
+        ]);
+    }
+
+
+    /**
+     * @throws ReflectionException
+     */
+    public function exchange()
+    {
+        if (!$this->request->is("post")) {
+            return redirect()->back()->with('error', 'Invalid request method.');
+        }
+
+        $itemModel = new ItemModel();
+        $item = $itemModel->find($this->request->getPost("item_id"));
+        if (!$item) {
+            return redirect()->to('/error')->with('error', 'Item not found.');
+        }
+
+        $exchangeModel = new ExchangeModel();
+        $exchangeData = [
+            'offered_item_id' => strip_tags($this->request->getPost('offered_item_id')),
+            'requested_item_id' => strip_tags($this->request->getPost('requested_item_id')),
+            'status' => 'proposed',
+        ];
+        if ($exchangeModel->insert($exchangeData)) {
+            return redirect()->to('/user/dashboard')->with('success', 'Exchange requested successfully.');
+        }
+        return redirect()->to('/user/dashboard')->with('error', 'Something went wrong.');
+    }
+
+    public function acceptExchange(): \CodeIgniter\HTTP\RedirectResponse
+    {
+        $exchange_id = $this->request->getPost('exchange_id');
+
+        $db = db_connect();
+
+        $sql = 'SELECT offered_item_id, requested_item_id FROM exchanges WHERE id = :exchange_id:';
+        $query = $db->query($sql, ['exchange_id' => $exchange_id]);
+        $exchange = $query->getRow();
+
+        if ($exchange) {
+            $db->transStart();
+
+            $offered_item_sql = 'SELECT user_id FROM items WHERE id = :offered_item_id:';
+            $requested_item_sql = 'SELECT user_id FROM items WHERE id = :requested_item_id:';
+
+            $offered_item_query = $db->query($offered_item_sql, ['offered_item_id' => $exchange->offered_item_id]);
+            $requested_item_query = $db->query($requested_item_sql, ['requested_item_id' => $exchange->requested_item_id]);
+
+            $offered_item_user_id = $offered_item_query->getRow()->user_id;
+            $requested_item_user_id = $requested_item_query->getRow()->user_id;
+
+            $swap_sql = 'UPDATE items 
+                     SET user_id = CASE 
+                         WHEN id = :offered_item_id: THEN :requested_item_user_id:
+                         WHEN id = :requested_item_id: THEN :offered_item_user_id:
+                         END
+                     WHERE id IN (:offered_item_id:, :requested_item_id:)';
+
+            $db->query($swap_sql, [
+                'offered_item_id' => $exchange->offered_item_id,
+                'requested_item_id' => $exchange->requested_item_id,
+                'offered_item_user_id' => $offered_item_user_id,
+                'requested_item_user_id' => $requested_item_user_id,
+            ]);
+
+            $update_exchange_sql = 'UPDATE exchanges SET status = "accepted" WHERE id = :exchange_id:';
+            $db->query($update_exchange_sql, ['exchange_id' => $exchange_id]);
+
+            $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                return redirect()->back()->with('error', 'Failed to accept exchange.');
+            }
+
+            return redirect()->back()->with('success', 'Exchange accepted and items swapped.');
+        }
+
+        return redirect()->back()->with('error', 'Exchange not found.');
+    }
+
+    public function declineExchange(): \CodeIgniter\HTTP\RedirectResponse
+    {
+        $exchange_id = $this->request->getPost('exchange_id');
+        $db = db_connect();
+
+        $sql = 'DELETE FROM exchanges WHERE id = :exchange_id:';
+        $db->query($sql, ['exchange_id' => $exchange_id]);
+
+        return redirect()->back()->with('success', 'Exchange declined and removed.');
+    }
+
+
 
 }
