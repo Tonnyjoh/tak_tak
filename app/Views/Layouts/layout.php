@@ -29,6 +29,7 @@
                     <a class="nav-link" href="<?= site_url('/item/listItems') ?>"><i class="fas fa-list"></i>Takalo</a>
                 </li>
             <?php endif; ?>
+
             <?php if (session()->get("isLoggedIn")): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= site_url('/auth/logout') ?>"><i class="fas fa-sign-out-alt"></i> Logout</a>

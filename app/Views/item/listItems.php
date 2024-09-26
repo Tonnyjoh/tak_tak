@@ -45,10 +45,14 @@
                             <p class="card-text"><?= esc($item->description) ?></p>
                             <p class="card-text"><strong>Price: </strong><?= esc($item->estimated_price) ?> Ar</p>
 
-                            <!-- Bouton pour ouvrir le modal d'échange -->
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exchangeModal" data-item-id="<?= $item->id ?>">
                                 Propose an Exchange
                             </button>
+                            <form method="post" action="<?=base_url('item/history')?>">
+                                <input name="item_id" type="hidden" value="<?= $item->id?>">
+                                <button class="btn btn-secondary mt-2">View history</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
