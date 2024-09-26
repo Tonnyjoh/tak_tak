@@ -152,36 +152,63 @@ class Item extends BaseController
 
     public function getListItems(): string
     {
+        $categModel = new CategoryModel();
         $userId = session()->get('user_id');
         $db = db_connect();
 
-        $sqlItems = 'SELECT items.*, GROUP_CONCAT(item_photos.photo_url) AS photos 
+        // Récupérer les filtres depuis le formulaire (POST)
+        $category = $this->request->getPost('category');
+        $keywords = $this->request->getPost('keywords');
+
+        // Construire la requête SQL de base pour les items
+        $sqlItems = 'SELECT items.*, GROUP_CONCAT(item_photos.photo_url) AS photos, categories.name AS category_name 
                  FROM items 
                  LEFT JOIN item_photos ON items.id = item_photos.item_id 
-                 WHERE items.user_id != :user_id:
-                 GROUP BY items.id';
+                 LEFT JOIN categories ON items.category_id = categories.id
+                 WHERE items.user_id != :user_id:';
+
+        // Appliquer le filtre par category_id s'il est sélectionné
+        if (!empty($category)) {
+            $sqlItems .= ' AND items.category_id = :category_id:';
+        }
+
+        // Appliquer le filtre par mots-clés s'il y en a
+        if (!empty($keywords)) {
+            $sqlItems .= ' AND items.title LIKE :keywords:';
+            $keywords = '%' . $keywords . '%';  // Formatage pour la recherche partielle
+        }
+
+        $sqlItems .= ' GROUP BY items.id';  // Groupe par ID d'item comme dans la requête originale
+
+        // Préparer et exécuter la requête avec les paramètres
         $queryItems = $db->query($sqlItems, [
             'user_id' => $userId,
+            'category_id' => $category,
+            'keywords' => $keywords,
         ]);
         $items = $queryItems->getResultObject();
 
+        // Requête pour les items de l'utilisateur
         $sqlUserItems = 'SELECT * FROM items WHERE user_id = :user_id:';
         $queryUserItems = $db->query($sqlUserItems, [
             'user_id' => $userId,
         ]);
         $userItems = $queryUserItems->getResultObject();
 
+        // Renvoyer la vue avec les données filtrées
         return view('item/listItems', [
             'items' => $items,
             'userItems' => $userItems,
+            'categories' => $categModel->findAll(),
         ]);
     }
+
 
 
     /**
      * @throws ReflectionException
      */
-    public function exchange()
+    public function exchange(): \CodeIgniter\HTTP\RedirectResponse
     {
         if (!$this->request->is("post")) {
             return redirect()->back()->with('error', 'Invalid request method.');
@@ -265,6 +292,10 @@ class Item extends BaseController
 
         return redirect()->back()->with('success', 'Exchange declined and removed.');
     }
+
+
+
+
 
 
 
