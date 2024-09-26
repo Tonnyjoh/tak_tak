@@ -4,6 +4,7 @@
 
 <div class="container">
     <?php if (session()->get("role") == 'client'): ?>
+        <!-- Items Section -->
         <div id="sectionone">
             <div class="card">
                 <h2 class="card-title">Items</h2>
@@ -27,45 +28,69 @@
                                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#itemModal-<?= esc($item->id) ?>">
                                         See
                                     </button>
-                                    <a href="<?= site_url('item/update/'.$item->id) ?>" class="btn btn-secondary">Update</a>
+                                    <form method="post" action="<?= site_url('item/update/') ?>">
+                                        <input type="hidden" value="<?= $item->id ?>" name="item_id">
+                                        <button type="submit" class="btn btn-secondary">Update</button>
+                                    </form>
                                     <a href="<?= site_url('item/delete/'.$item->id); ?>" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-secondary">Delete</a>
                                 </td>
                             </tr>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="itemModal-<?= esc($item->id) ?>" tabindex="-1" aria-labelledby="itemModalLabel-<?= esc($item->id) ?>" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="itemModalLabel-<?= esc($item->id) ?>"><?= esc($item->title) ?></h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>Description:</strong> <?= esc($item->description) ?></p>
-                                            <p><strong>Price:</strong> <?= esc($item->estimated_price) ?></p>
-
-                                            <?php
-                                            // Explode the photos string to get an array of photo URLs
-                                            $photos = explode(',', $item->photos);
-                                            foreach ($photos as $photo): ?>
-                                                <img src="<?= base_url('uploads/'.$photo) ?>" class="img-fluid" alt="Item photo">
-                                            <?php endforeach; ?>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Modal -->
                         <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php endif; ?>
                 <a href="<?= site_url('/item/create') ?>" class="btn btn-primary">Create an Item</a>
-
             </div>
         </div>
+
+        <!-- Exchange Requests Section -->
+        <div class="card">
+            <h2 class="card-title">Exchange Requests</h2>
+            <?php if (!empty($exchanges) && is_array($exchanges)): ?>
+                <table class="data-table">
+                    <thead>
+                    <tr>
+                        <th>Offered Item</th>
+                        <th>Requested Item</th>
+                        <th>Owner of Requested Item</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($exchanges as $exchange): ?>
+                        <tr>
+                            <td><?= esc($exchange->offered_item_title) ?></td>
+                            <td><?= esc($exchange->requested_item_title) ?></td>
+                            <td><?= esc($exchange->owner_name) ?></td>
+                            <td><?= esc($exchange->exchange_date) ?></td>
+                            <td><?= esc($exchange->status) ?></td>
+                            <td>
+                                <?php if ($exchange->status == 'proposed'): ?>
+                                    <form method="post" action="<?= site_url('exchange/accept') ?>">
+                                        <input type="hidden" name="exchange_id" value="<?= $exchange->id ?>">
+                                        <button type="submit" class="btn btn-success">Accept</button>
+                                    </form>
+                                    <form method="post" action="<?= site_url('exchange/decline') ?>">
+                                        <input type="hidden" name="exchange_id" value="<?= $exchange->id ?>">
+                                        <button type="submit" class="btn btn-danger">Decline</button>
+                                    </form>
+                                <?php else: ?>
+                                    <span class="badge <?= $exchange->status == 'accepted' ? 'bg-success' : 'bg-danger' ?>">
+                                        <?= ucfirst($exchange->status) ?>
+                                    </span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No exchange requests found.</p>
+            <?php endif; ?>
+        </div>
+
         <!-- Personal Information Section -->
         <div class="card info-card">
             <h2 class="card-title">Personal Information</h2>
@@ -75,7 +100,7 @@
         </div>
 
     <?php else: ?>
-        <!-- User List for Admin -->
+        <!-- Admin Section for Managing Users -->
         <div class="containeradmin">
             <a href="<?= base_url('/admin/getFormCateg')?>">Create category</a>
 
@@ -113,7 +138,6 @@
                 </table>
             </div>
         </div>
-
     <?php endif; ?>
 </div>
 
