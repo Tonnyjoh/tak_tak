@@ -32,6 +32,15 @@
                                         <button type="submit" class="btn btn-info">Update</button>
                                     </form>
                                     <a href="<?= site_url('item/delete/'.$item->id); ?>" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</a>
+                                    <form action="<?= site_url('item/searchPercent/') ?>" method="post" class="d-inline-block">
+                                        <input type="hidden" value="<?= $item->id ?>" name="item_id">
+                                        <label for="percent" class="form-label">Select percentage range:</label>
+                                        <select name="percent" id="percent" class="form-select d-inline-block w-auto">
+                                            <option value="10">10%</option>
+                                            <option value="20">20%</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </form>
                                 </td>
                             </tr>
 

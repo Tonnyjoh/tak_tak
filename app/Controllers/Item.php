@@ -295,7 +295,7 @@ class Item extends BaseController
         return redirect()->back()->with('success', 'Exchange declined and removed.');
     }
 
-    public function getHistory()
+    public function getHistory(): string
     {
         $db = db_connect();
         $item_id= $this->request->getPost("item_id");
@@ -315,6 +315,49 @@ class Item extends BaseController
         $item = $itemModel->find($item_id);
         return view('/item/item_history', ['history' => $history, 'item' => $item]);
     }
+    public function searchPercent()
+    {
+        $db = db_connect();
+
+        $item_id = $this->request->getPost("item_id");
+        $percent = $this->request->getPost("percent");
+        $user_id = session()->get('user_id');
+
+        $sql = 'SELECT estimated_price FROM items WHERE id = ?';
+        $query = $db->query($sql, [$item_id]);
+        $item = $query->getRow();
+
+        if (!$item) {
+            return redirect()->to('/user/dashboard')->with('error', 'Item not found.');
+        }
+
+        $estimated_price = $item->estimated_price;
+
+        $moins = $estimated_price * (1 - $percent / 100);
+        $plus = $estimated_price * (1 + $percent / 100);
+
+        $sql = 'SELECT * FROM items WHERE estimated_price BETWEEN ? AND ? AND user_id != ?';
+        $query = $db->query($sql, [$moins, $plus, $user_id]);
+        $items = $query->getResultArray();
+
+        foreach ($items as &$item) {
+            $itemPrice = $item['estimated_price'];
+            $item['price_difference'] = (($itemPrice - $estimated_price) / $estimated_price) * 100;
+        }
+
+        $sql = 'SELECT id, title FROM items WHERE user_id = ?';
+        $userItemsQuery = $db->query($sql, [$user_id]);
+        $userItems = $userItemsQuery->getResult();
+
+        return view('/item/search_percent', [
+            'items' => $items,
+            'percent' => $percent,
+            'item_id' => $item_id,
+            'userItems' => $userItems,
+            'referencePrice' => $estimated_price
+        ]);
+    }
+
 
 
 
