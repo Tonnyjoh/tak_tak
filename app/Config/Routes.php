@@ -69,6 +69,7 @@ if(session()->get('isLoggedIn') && session()->get('role') == 'client'){
     $routes->post('/item/exchange', 'Item::exchange');
     $routes->post('/item/filterListItems', 'Item::getListItems');
     $routes->post('/item/history', 'Item::getHistory');
+    $routes->post('/item/searchPercent/', 'Item::searchPercent');
 
     $routes->get('/exchange/accept/(:segment)', 'Item::acceptExchange/$1');
     $routes->get('/exchange/decline/(:segment)', 'Item::declineExchange/$1');

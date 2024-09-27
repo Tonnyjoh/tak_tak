@@ -70,18 +70,12 @@
             <i class="fas fa-check-circle"></i> <?= session()->get('success') ?>
         </div>
     <?php endif; ?>
-
     <?php if (session()->get('error')): ?>
         <div class="alert alert-danger">
             <i class="fas fa-exclamation-circle"></i> <?= session()->get('error') ?>
         </div>
     <?php endif; ?>
-
     <?php echo \Config\Services::validation()->listErrors(); ?>
-
-    <div class="container_Ci">
-        <span class="text-muted">&copy; 2024 CI_Taktak</span>
-    </div>
 </footer>
 
 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
