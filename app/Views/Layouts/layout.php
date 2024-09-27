@@ -113,11 +113,11 @@
         });
     });
 
-    /*// SCRIPT pour le FETCH
+    // SCRIPT pour le FETCH
     if(document.getElementById("form_search")) {
         document.getElementById('form_search').addEventListener('input', function (event) {
             event.preventDefault();
-            const searchInputValue = document.getElementById('search_input').value; // Récupère la valeur de l'entrée de recherche
+            const searchInputValue = document.getElementById('search_input').value;
             fetch('<?= site_url("/fetch.php") ?>', {
                 method: 'POST',
                 headers: {
@@ -129,6 +129,7 @@
                     return res.json();
                 }
             }).then(function (data) {
+                console.log(data.data)
 
                 afficherResultats(data.data);
             }).catch(function (err) {
@@ -141,30 +142,32 @@
         const modalBody = document.getElementById('userDetails');
         modalBody.innerHTML = '';
 
-        data.forEach(user => {
-            const userElement = document.createElement('div');
-            userElement.classList.add('accordion', 'accordion-flush');
-            userElement.innerHTML = `
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-heading${user.id}">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${user.id}" aria-expanded="false" aria-controls="flush-collapse${user.id}">
-                            ${user.username}
-                        </button>
-                    </h2>
-                    <div id="flush-collapse${user.id}" class="accordion-collapse collapse" aria-labelledby="flush-heading${user.id}" data-bs-parent="#userDetails">
-                        <div class="accordion-body">
-                            <p><strong>Account Number:</strong> ${user.account_number || 'No account associated'}</p>
-                            <p><strong>Account Balance:</strong> ${user.balance || 'No account associated'}</p>
-                        </div>
-                    </div>
+        const userElement = document.createElement('div');
+        userElement.classList.add('accordion', 'accordion-flush');
+        userElement.innerHTML = `
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-heading${data.user.id}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${data.user.id}" aria-expanded="false" aria-controls="flush-collapse${data.user.id}">
+                    ${data.user.username}
+                </button>
+            </h2>
+            <div id="flush-collapse${data.user.id}" class="accordion-collapse collapse" aria-labelledby="flush-heading${data.user.id}" data-bs-parent="#userDetails">
+                <div class="accordion-body">
+                    <p><strong>Email:</strong> ${data.user.email}</p>
+                    <p><strong>Role:</strong> ${data.user.role}</p>
+                    <p><strong>Item Count:</strong> ${data.item_count}</p>
+                    <p><strong>Exchanges Offered:</strong> ${data.exchanges_offered}</p>
+                    <p><strong>Exchanges Received:</strong> ${data.exchanges_received}</p>
                 </div>
-            `;
-            modalBody.appendChild(userElement);
-        });
+            </div>
+        </div>
+    `;
+        modalBody.appendChild(userElement);
 
         const modal = new bootstrap.Modal(document.getElementById('userModal'));
         modal.show();
-    }*/
+    }
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
