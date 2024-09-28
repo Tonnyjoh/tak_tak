@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url('style/layout.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('style/infoUser.css'); ?>">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -65,18 +67,34 @@
 </div>
 
 <footer class="footer mt-auto py-3">
-    <?php if (session()->get('success')): ?>
-        <div class="alert alert-success">
-            <i class="fas fa-check-circle"></i> <?= session()->get('success') ?>
-        </div>
-    <?php endif; ?>
-    <?php if (session()->get('error')): ?>
-        <div class="alert alert-danger">
-            <i class="fas fa-exclamation-circle"></i> <?= session()->get('error') ?>
-        </div>
-    <?php endif; ?>
+    <script>
+        <?php if (session()->get('success')): ?>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: '<?= session()->get('success') ?>',
+            timer: 3000,
+            showConfirmButton: false,
+            position: 'top-end',
+            toast: true
+        });
+        <?php endif; ?>
+
+        <?php if (session()->get('error')): ?>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: '<?= session()->get('error') ?>',
+            timer: 3000,
+            showConfirmButton: false,
+            position: 'top-end',
+            toast: true
+        });
+        <?php endif; ?>
+    </script>
     <?php echo \Config\Services::validation()->listErrors(); ?>
 </footer>
+
 
 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -90,8 +108,8 @@
         </div>
     </div>
 </div>
-
 <script>
+
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggleBtn');
     const indicator = document.getElementById('indicator');
