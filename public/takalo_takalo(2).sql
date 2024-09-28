@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 25 sep. 2024 à 17:06
+-- Généré le : ven. 27 sep. 2024 à 22:53
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -63,6 +63,15 @@ CREATE TABLE `exchanges` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Déchargement des données de la table `exchanges`
+--
+
+INSERT INTO `exchanges` (`id`, `offered_item_id`, `requested_item_id`, `exchange_date`, `status`) VALUES
+(5, 13, 16, '2024-09-26 13:22:10', 'accepted'),
+(9, 16, 15, '2024-09-27 00:26:38', 'accepted'),
+(10, 15, 13, '2024-09-27 08:39:17', 'accepted');
+
+--
 -- Déclencheurs `exchanges`
 --
 DELIMITER $$
@@ -86,6 +95,16 @@ CREATE TABLE `exchange_history` (
   `exchange_date` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `exchange_history`
+--
+
+INSERT INTO `exchange_history` (`id`, `item_id`, `previous_owner_id`, `new_owner_id`, `exchange_date`) VALUES
+(1, 16, 3, 4, '2024-09-27 00:33:21'),
+(2, 15, 4, 3, '2024-09-27 00:33:21'),
+(3, 15, 3, 5, '2024-09-27 08:39:39'),
+(4, 13, 5, 3, '2024-09-27 08:39:39');
+
 -- --------------------------------------------------------
 
 --
@@ -108,7 +127,17 @@ CREATE TABLE `items` (
 
 INSERT INTO `items` (`id`, `user_id`, `category_id`, `title`, `description`, `estimated_price`, `added_date`) VALUES
 (13, 3, 1, 'google pixel 4', 'En tres bon etat', 650000.00, '2024-09-25 02:39:56'),
-(14, 3, 3, 'Short', 'tendance', 6000.00, '2024-09-25 02:54:54');
+(15, 5, 5, 'Ballon', 'Tres beau ballon', 20000.00, '2024-09-25 23:00:51'),
+(16, 4, 9, 'Collier', 'En argent ', 21000.00, '2024-09-25 23:02:16'),
+(17, 3, 1, 'Smartphone Samsung Galaxy S21', 'Smartphone haut de gamme avec écran 6.2 pouces, 128 Go de stockage, appareil photo 64 MP.', 1200000.00, '2024-09-27 08:15:34'),
+(18, 3, 1, 'Casque Audio Sony WH-1000XM4', 'Casque Bluetooth avec réduction de bruit active, autonomie jusqu’à 30 heures.', 500000.00, '2024-09-27 08:16:38'),
+(19, 3, 3, 'Basket Adidas Yeezy Boost 350 V2', 'Sneakers édition limitée, taille 42, état neuf.', 490000.00, '2024-09-27 08:17:20'),
+(20, 4, 3, 'Veste en cuir Zara', 'este en cuir noir pour hommes, taille M, en parfait état.', 200000.00, '2024-09-27 08:18:08'),
+(21, 4, 11, 'Manuel de programmation \"Python pour les débutants\"', 'Guide complet pour apprendre à programmer en Python.', 25000.00, '2024-09-27 08:18:58'),
+(22, 5, 1, 'Console de jeux PlayStation 5', 'Console de jeux dernière génération avec une manette incluse.', 1250000.00, '2024-09-27 08:20:00'),
+(23, 5, 7, 'Vélo de montagne Scott', 'Vélo tout-terrain Scott Aspect 940, cadre aluminium, 29 pouces.', 1300000.00, '2024-09-27 08:21:03'),
+(24, 5, 7, 'Tapis de course ProForm 505 CST', 'Tapis de course pliable avec écran LCD, 18 programmes d\'entraînement.', 1230000.00, '2024-09-27 08:21:57'),
+(25, 3, 11, 'Livre \"Sapiens: Une brève histoire de l’humanité\"', 'Livre d’histoire best-seller par Yuval Noah Harari.', 20000.00, '2024-09-27 08:23:16');
 
 -- --------------------------------------------------------
 
@@ -129,7 +158,7 @@ CREATE TABLE `item_photos` (
 INSERT INTO `item_photos` (`id`, `item_id`, `photo_url`) VALUES
 (8, 13, '5175303.jpg'),
 (9, 13, '742504.jpg'),
-(10, 14, '73d92ef3ae3a2920d75d2a68ec339930.png');
+(11, 15, 'bc13aeda287f8b812ee4b48c64209ae4.png');
 
 -- --------------------------------------------------------
 
@@ -149,7 +178,7 @@ CREATE TABLE `usage_statistics` (
 --
 
 INSERT INTO `usage_statistics` (`id`, `user_count`, `exchange_count`, `last_update`) VALUES
-(1, 3, 0, '2024-09-24 18:29:42');
+(1, 5, 11, '2024-09-27 11:44:21');
 
 -- --------------------------------------------------------
 
@@ -172,7 +201,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `registration_date`) VALUES
 (2, 'admin', 'root@admin.com', '$2y$10$XnOv6iuGMUv47H7PcJ4/IO0cyWCbYDZxe9bDaSOZYcvWcyVnzmV8C', 'admin', '2024-09-24 18:12:22'),
-(3, 'Rabe Jerena', 'rabe@test.com', '$2y$10$Mksxwc69/ZMqwp2aVsD7AOgygWNfzeN2j4i7L2p.Rp51YihIZIXTa', 'client', '2024-09-24 18:29:42');
+(3, 'Rabe Jerena', 'rabe@test.com', '$2y$10$Mksxwc69/ZMqwp2aVsD7AOgygWNfzeN2j4i7L2p.Rp51YihIZIXTa', 'client', '2024-09-24 18:29:42'),
+(4, 'Ampela Soa', 'ampela@gmail.com', '$2y$10$9yCl29IuRgRR0dVFjaTpauaJ11ZwtKtuBH4R.p9WWHptUuaG0JtqK', 'client', '2024-09-25 22:57:27'),
+(5, 'Rakoto kely', 'rak@example.com', '$2y$10$tAI0p/oug7Ld3kXzVe2Z1eQdBMUOlkTyOgCkkWVy0qdc6XqFKG77G', 'client', '2024-09-25 23:00:07');
 
 --
 -- Déclencheurs `users`
@@ -253,25 +284,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `exchanges`
 --
 ALTER TABLE `exchanges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `exchange_history`
 --
 ALTER TABLE `exchange_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `item_photos`
 --
 ALTER TABLE `item_photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `usage_statistics`
@@ -283,7 +314,7 @@ ALTER TABLE `usage_statistics`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
