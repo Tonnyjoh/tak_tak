@@ -26,9 +26,9 @@ class Admin extends BaseController
     public function update($id): \CodeIgniter\HTTP\RedirectResponse
     {
         $userModel = new UserModel();
-        $dataUser=["username"=>$this->request->getPost("username"),
+        $dataUser=[
+            "username"=>$this->request->getPost("username"),
             "email"=>$this->request->getPost("email"),
-            "password"=>password_hash($this->request->getPost("password"), PASSWORD_DEFAULT),
         ];
         $userModel->update($id,$dataUser);
         return redirect()->to('/admin/dashboard')->with("success","User has been updated");
