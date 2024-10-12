@@ -109,6 +109,15 @@
     </div>
 </div>
 <script>
+    const debounce = (func, delay) => {
+        let debounceTimer;
+        return function() {
+            const context = this;
+            const args = arguments;
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => func.apply(context, args), delay);
+        };
+    };
 
     const sidebar = document.getElementById('sidebar');
     const toggleBtn = document.getElementById('toggleBtn');
@@ -131,60 +140,65 @@
         });
     });
 
-    // SCRIPT pour le FETCH
     if(document.getElementById("form_search")) {
-        document.getElementById('form_search').addEventListener('input', function (event) {
+        document.getElementById('search_input').addEventListener('input', debounce(function (event) {
             event.preventDefault();
-            const searchInputValue = document.getElementById('search_input').value;
-            fetch('<?= site_url("/fetch.php") ?>', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ query: searchInputValue })
-            }).then(function (res) {
-                if (res.ok) {
-                    return res.json();
-                }
-            }).then(function (data) {
-                console.log(data.data)
+            const searchInputValue = document.getElementById('search_input').value.trim();
 
-                afficherResultats(data.data);
-            }).catch(function (err) {
-                console.log("Erreur " + err);
-            });
-        });
+            if (searchInputValue.length > 0) {
+                fetch('<?= site_url("/fetch.php") ?>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ query: searchInputValue })
+                }).then(function (res) {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                }).then(function (data) {
+                    console.log(data.data)
+
+                    afficherResultats(data.data);
+                }).catch(function (err) {
+                    console.log("Erreur " + err);
+                });
+            }
+        }, 500));
     }
 
     function afficherResultats(data) {
         const modalBody = document.getElementById('userDetails');
         modalBody.innerHTML = '';
 
-        const userElement = document.createElement('div');
-        userElement.classList.add('accordion', 'accordion-flush');
-        userElement.innerHTML = `
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="flush-heading${data.user.id}">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${data.user.id}" aria-expanded="false" aria-controls="flush-collapse${data.user.id}">
-                    ${data.user.username}
-                </button>
-            </h2>
-            <div id="flush-collapse${data.user.id}" class="accordion-collapse collapse" aria-labelledby="flush-heading${data.user.id}" data-bs-parent="#userDetails">
-                <div class="accordion-body">
-                    <p><strong>Email:</strong> ${data.user.email}</p>
-                    <p><strong>Role:</strong> ${data.user.role}</p>
-                    <p><strong>Item Count:</strong> ${data.item_count}</p>
-                    <p><strong>Exchanges Offered:</strong> ${data.exchanges_offered}</p>
-                    <p><strong>Exchanges Received:</strong> ${data.exchanges_received}</p>
+        data.forEach((userData) => {
+            const userElement = document.createElement('div');
+            userElement.classList.add('accordion', 'accordion-flush');
+            userElement.innerHTML = `
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading${userData.user.id}">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${userData.user.id}" aria-expanded="false" aria-controls="flush-collapse${userData.user.id}">
+                        ${userData.user.username}
+                    </button>
+                </h2>
+                <div id="flush-collapse${userData.user.id}" class="accordion-collapse collapse" aria-labelledby="flush-heading${userData.user.id}" data-bs-parent="#userDetails">
+                    <div class="accordion-body">
+                        <p><strong>Email:</strong> ${userData.user.email}</p>
+                        <p><strong>Role:</strong> ${userData.user.role}</p>
+                        <p><strong>Item Count:</strong> ${userData.item_count}</p>
+                        <p><strong>Exchanges Offered:</strong> ${userData.exchanges_offered}</p>
+                        <p><strong>Exchanges Received:</strong> ${userData.exchanges_received}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
-        modalBody.appendChild(userElement);
+        `;
+            modalBody.appendChild(userElement);
+        });
 
         const modal = new bootstrap.Modal(document.getElementById('userModal'));
         modal.show();
     }
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -192,5 +206,4 @@
         crossorigin="anonymous"></script>
 
 </body>
-
 </html>
