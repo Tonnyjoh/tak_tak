@@ -27,7 +27,7 @@
                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#itemModal-<?= esc($item->id) ?>">
                                         See
                                     </button>
-                                    <form method="post" action="<?= site_url('item/update/') ?>" class="d-inline">
+                                    <form method="post" action="<?= site_url('item/getFormUpdate/') ?>" class="d-inline">
                                         <input type="hidden" value="<?= $item->id ?>" name="item_id">
                                         <button type="submit" class="btn btn-info">Update</button>
                                     </form>
@@ -77,7 +77,7 @@
 
         <!-- Exchange Requests Section -->
         <div class="card shadow mb-4">
-            <h2 class="card-title text-center">Demandes d'Échange</h2>
+            <h2 class="card-title text-center">Exchange requests</h2>
             <?php if (!empty($exchanges) && is_array($exchanges)): ?>
                 <table class="table table-striped table-bordered">
                     <thead>
