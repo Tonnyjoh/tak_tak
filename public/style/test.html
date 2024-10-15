@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau d'Absences</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+
+    .absence-container {
+      width: 60%;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #f1f1f1;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+
+    th {
+      font-size: 16px;
+      color: #666;
+    }
+
+    td {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .employee {
+      display: flex;
+      align-items: center;
+    }
+
+    .employee img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .type {
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: white;
+    }
+
+    .holiday {
+      background-color: #a2d2ff;
+    }
+
+    .unpaid-leave {
+      background-color: #c9f1e1;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+  </style>
+</head>
+<body>
+<div class="absence-container">
+  <h2>Absent this week (3)</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Type</th>
+      <th>Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <div class="employee">
+          <img src="employee1.jpg" alt="Andrea Garcia">
+          <span>Andrea Garcia</span>
+        </div>
+      </td>
+      <td><span class="type holiday">Holiday</span></td>
+      <td>Fr 14.6 - Fr 21.6.2024</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="employee">
+          <img src="employee2.jpg" alt="Mikko Seppälä">
+          <span>Mikko Seppälä</span>
+        </div>
+      </td>
+      <td><span class="type unpaid-leave">Unpaid leave</span></td>
+      <td>Sa 15.6 - Sa 22.6.2024</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="employee">
+          <img src="employee3.jpg" alt="Sam Rodgers">
+          <span>Sam Rodgers</span>
+        </div>
+      </td>
+      <td><span class="type holiday">Holiday</span></td>
+      <td>Fr 31.5 - Fr 14.6.2024</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
