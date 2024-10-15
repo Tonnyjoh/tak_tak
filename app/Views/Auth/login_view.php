@@ -21,7 +21,7 @@
         .container {
             max-width: 900px;
             height: 550px;
-            margin: 100px auto;
+            margin: 10% auto;
             position: relative;
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -62,23 +62,26 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #6c757d url('https://cdn.pixabay.com/photo/2020/06/04/17/35/garment-racks-5259773_640.jpg') center center / cover;
-            filter: blur(3px);
+            background: #6c757d url('<?=site_url('/imgLogin.jpg')?>') center center / cover;
+            filter: blur(2px);
             z-index: 0;
         }
         .img__text {
             text-align: center;
             margin-bottom: 20px;
+            font-size: 20px;
             z-index: 1;
         }
         .img__btn {
             cursor: pointer;
-            margin-top: 20px;
+            margin:auto;
             padding: 10px 20px;
             background: rgba(0, 0, 0, 0.6);
             border-radius: 20px;
             color: #fff;
+            font-size: 16px;
             transition: background 0.3s ease;
+            width: 100px;
         }
         .img__btn:hover {
             background: rgba(0, 0, 0, 0.8);
@@ -163,7 +166,7 @@
     </div>
 
     <div class="sub-container">
-        <div class="bg-image"></div> <!-- Background image with blur -->
+        <div class="bg-image"></div>
         <div class="img__text">
             <h2>New here?</h2>
             <p>Sign up and discover a great amount of new opportunities!</p>

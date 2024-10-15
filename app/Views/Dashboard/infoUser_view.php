@@ -1,85 +1,117 @@
 <?= $this->extend('Layouts/layout') ?>
 
 <?= $this->section('content') ?>
+<?php if (session()->get('role')== 'client'): ?>
+    <!-- Profil dropdown -->
+    <div class="dropdown" style="position: absolute; top: 10px; right: 10px;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i> Profil
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+            <p><strong>Name:</strong> <?= esc($user['username']) ?></p>
+            <p><strong>Email:</strong> <?= esc($user['email']) ?></p>
+            <li><a class="dropdown-item" href="<?= site_url('user/edit/'); ?>">Edit Profile</a></li>
+        </ul>
+    </div>
+<?php endif; ?>
 
-<div class="container">
+<div class="container position-relative bg-container"> <!-- New background class -->
     <?php if (session()->get("role") == 'client'): ?>
+        <!-- Section des items -->
         <div id="sectionone" class="mb-4">
-            <div class="card shadow">
-                <h2 class="card-title text-center">Items</h2>
+            <div>
                 <?php if (!empty($items) && is_array($items)): ?>
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($items as $item): ?>
+                    <div class="items-container">
+                        <h2>Items</h2>
+                        <table class="absence-table">
+                            <thead>
                             <tr>
-                                <td><?= esc($item->title) ?></td>
-                                <td><?= esc($item->description) ?></td>
-                                <td><?= esc($item->estimated_price) ?></td>
-                                <td>
-                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#itemModal-<?= esc($item->id) ?>">
-                                        See
-                                    </button>
-                                    <form method="post" action="<?= site_url('item/getFormUpdate/') ?>" class="d-inline">
-                                        <input type="hidden" value="<?= $item->id ?>" name="item_id">
-                                        <button type="submit" class="btn btn-info">Update</button>
-                                    </form>
-                                    <a href="<?= site_url('item/delete/'.$item->id); ?>" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">Delete</a>
-                                    <form action="<?= site_url('item/searchPercent/') ?>" method="post" class="d-inline-block">
-                                        <input type="hidden" value="<?= $item->id ?>" name="item_id">
-                                        <label for="percent" class="form-label">Select percentage range:</label>
-                                        <select name="percent" id="percent" class="form-select d-inline-block w-auto">
-                                            <option value="10">10%</option>
-                                            <option value="20">20%</option>
-                                        </select>
-                                        <button type="submit" class="btn btn-primary">Search</button>
-                                    </form>
-                                </td>
+                                <th>Item</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Actions</th>
                             </tr>
-
-                            <!-- Modal for Item Details -->
-                            <div class="modal fade" id="itemModal-<?= esc($item->id) ?>" tabindex="-1" aria-labelledby="itemModalLabel-<?= esc($item->id) ?>" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="itemModalLabel-<?= esc($item->id) ?>"><?= esc($item->title) ?></h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>Description:</strong> <?= esc($item->description) ?></p>
-                                            <p><strong>Price:</strong> <?= esc($item->estimated_price) ?></p>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($items as $item): ?>
+                                <tr>
+                                    <td>
+                                        <div class="employee">
                                             <?php
                                             $photos = explode(',', $item->photos);
-                                            foreach ($photos as $photo): ?>
-                                                <img src="<?= base_url('uploads/'.$photo) ?>" class="img-fluid mb-2" alt="Item photo">
-                                            <?php endforeach; ?>
+                                            $firstPhoto = !empty($photos[0]) ? $photos[0] : '8399758.jpg';
+                                            ?>
+                                            <img src="<?= base_url('uploads/' . $firstPhoto) ?>" class="img-fluid" alt="<?= esc($item->title) ?>">
+                                            <span><?= esc($item->title) ?></span>
+                                        </div>
+                                    </td>
+                                    <td><?= esc($item->description) ?></td>
+                                    <td><?= esc($item->estimated_price) ?></td>
+                                    <td>
+                                        <div class="actions">
+                                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#itemModal-<?= esc($item->id) ?>">
+                                                <i class="fas fa-eye"></i> See
+                                            </button>
+                                            <form method="post" action="<?= site_url('item/getFormUpdate/') ?>" class="d-inline">
+                                                <input type="hidden" value="<?= $item->id ?>" name="item_id">
+                                                <button type="submit" class="btn btn-info">
+                                                    <i class="fas fa-edit"></i> Update
+                                                </button>
+                                            </form>
+                                            <a href="<?= site_url('item/delete/' . $item->id); ?>" onclick="return confirm('Are you sure you want to delete this item?');" class="btn btn-danger">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                            <form action="<?= site_url('item/searchPercent/') ?>" method="post" class="d-inline-block percent-range">
+                                                <input type="hidden" value="<?= $item->id ?>" name="item_id">
+                                                <select name="percent" id="percent" class="form-select d-inline-block w-auto">
+                                                    <option value="10">10%</option>
+                                                    <option value="20">20%</option>
+                                                </select>
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-search"></i> Search
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Modal for Item Details -->
+                                <div class="modal fade" id="itemModal-<?= esc($item->id) ?>" tabindex="-1" aria-labelledby="itemModalLabel-<?= esc($item->id) ?>" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="itemModalLabel-<?= esc($item->id) ?>"><?= esc($item->title) ?></h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p><strong>Description:</strong> <?= esc($item->description) ?></p>
+                                                <p><strong>Price:</strong> <?= esc($item->estimated_price) ?></p>
+                                                <?php foreach ($photos as $photo): ?>
+                                                    <img src="<?= base_url('uploads/' . $photo) ?>" class="img-fluid mb-2" alt="Item photo">
+                                                <?php endforeach; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- End Modal for Item Details -->
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                                <!-- End Modal for Item Details -->
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                        <a href="<?= site_url('/item/create') ?>" class="btn btn-primary mt-3">
+                            <i class="fas fa-plus"></i> Create an Item
+                        </a>
+                    </div>
                 <?php else: ?>
                     <p class="text-center">No items available.</p>
                 <?php endif; ?>
-                <a href="<?= site_url('/item/create') ?>" class="btn btn-primary mt-3">Create an Item</a>
             </div>
         </div>
 
-        <!-- Exchange Requests Section -->
-        <div class="card shadow mb-4">
-            <h2 class="card-title text-center">Exchange requests</h2>
+        <!-- Section des demandes d'échange -->
+        <div class="exchanges-container">
+            <h2>Exchange requests</h2>
             <?php if (!empty($exchanges) && is_array($exchanges)): ?>
-                <table class="table table-striped table-bordered">
+                <table>
                     <thead>
                     <tr>
                         <th>Offered Item</th>
@@ -97,7 +129,7 @@
                             <td><?= esc($exchange->requested_item_title) ?></td>
                             <td><?= esc($exchange->recipient_name) ?></td>
                             <td><?= esc($exchange->exchange_date) ?></td>
-                            <td><?= esc($exchange->status) ?></td>
+                            <td class="type holiday"><?= esc($exchange->status) ?></td>
                             <td>
                                 <?php if ($exchange->status === 'accepted'): ?>
                                     <span class="text-success">Already Accepted</span>
@@ -105,15 +137,15 @@
                                     <?php if ($exchange->requester_name === $user['username']): ?>
                                         <span class="text-warning">Request sent</span>
                                     <?php else: ?>
-                                        <a href="<?= site_url('exchange/accept/'.$exchange->id); ?>" class="btn btn-secondary">Accept</a>
+                                        <a href="<?= site_url('exchange/accept/' . $exchange->id); ?>" class="btn btn-secondary">Accept</a>
                                     <?php endif; ?>
-                                    <a href="<?= site_url('exchange/decline/'.$exchange->id); ?>" class="btn btn-danger"><?php
-                                        if ($exchange->requester_name === $user['username']){
-                                            echo "Cancel";
-                                        } else {
-                                            echo "Decline";
-                                        }
-                                        ?></a>
+                                    <a href="<?= site_url('exchange/decline/' . $exchange->id); ?>" class="btn btn-danger">
+                                        <?php if ($exchange->requester_name === $user['username']): ?>
+                                            Cancel
+                                        <?php else: ?>
+                                            Decline
+                                        <?php endif; ?>
+                                    </a>
                                 <?php endif; ?>
                             </td>
                         </tr>
@@ -125,19 +157,10 @@
             <?php endif; ?>
         </div>
 
-        <!-- Personal Information Section -->
-        <div class="card info-card shadow mb-4">
-            <h2 class="card-title text-center">Personal Information</h2>
-            <p><strong>Name:</strong> <?= esc($user['username']) ?></p>
-            <p><strong>Email:</strong> <?= esc($user['email']) ?></p>
-            <a href="<?= site_url('user/edit/'); ?>" class="btn btn-secondary">Edit</a>
-        </div>
-
     <?php else: ?>
-        <!-- User List for Admin -->
+        <!-- Liste des utilisateurs pour l'admin -->
         <div class="containeradmin mb-4">
             <a href="<?= base_url('/admin/getFormCateg') ?>" class="btn btn-primary mb-3">Create category</a>
-
             <div id="sectionone" class="card shadow">
                 <h2 class="text-center card-title">User List</h2>
                 <table class="table table-striped table-bordered">
@@ -158,8 +181,7 @@
                                 <td><?= esc($user->email) ?></td>
                                 <td>
                                     <a href="<?= site_url('admin/edit/' . $user->id); ?>" class="btn btn-secondary">Edit</a>
-                                    <a href="<?= site_url('admin/delete/' . $user->id); ?>" class="btn btn-danger"
-                                       onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                    <a href="<?= site_url('admin/delete/' . $user->id); ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -171,21 +193,20 @@
                     </tbody>
                 </table>
             </div>
-            <div class="container">
-                <div class="statistics mb-4">
-                    <div class="card shadow">
-                        <div class="card-body">
-                            <h2 class="card-title">Dashboard Statistics</h2>
-                            <p><strong>Total Non-Admin Users:</strong> <?= esc($user_count) ?></p>
-                            <p><strong>Total Registered Users:</strong> <?= esc($statistics[0]->user_count) ?></p>
-                            <p><strong>Total Exchanges Conducted:</strong> <?= esc($statistics[0]->exchange_count) ?></p>
-                        </div>
+
+            <div class="statistics mb-4">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title">Dashboard Statistics</h2>
+                        <p><strong>Total Non-Admin Users:</strong> <?= esc($user_count) ?></p>
+                        <p><strong>Total Registered Users:</strong> <?= esc($statistics[0]->user_count) ?></p>
+                        <p><strong>Total Exchanges Conducted:</strong> <?= esc($statistics[0]->exchange_count) ?></p>
+
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     <?php endif; ?>
 </div>
-
 <?= $this->endSection() ?>
