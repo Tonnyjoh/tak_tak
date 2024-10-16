@@ -1,8 +1,9 @@
 body, html {
-  background: #ecf6ff;
+  background-color: #f7f7f7;
 }
 .dash{
   background: white;
+  border-radius: 10px;
 }
 .sidebar-wrapper {
   position: fixed;
