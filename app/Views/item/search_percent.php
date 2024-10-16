@@ -11,13 +11,13 @@
                 $itemPrice = $item['estimated_price'];
                 $priceDifference = (($itemPrice - $referencePrice) / $referencePrice) * 100;
                 ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
+                <div class="col-md-3 mb-4">
+                    <div class="card shadow-sm">
                         <div class="card-body">
                             <h5 class="card-title"><?= esc($item['title']) ?></h5>
                             <p class="card-text"><?= esc($item['description']) ?></p>
                             <p class="card-text"><strong>Price: </strong><?= esc($item['estimated_price']) ?> Ar</p>
-                            <p class="card-text"><strong>Difference: </strong><?= number_format($priceDifference, 0) ?>%</p>
+                            <p class="card-text price-difference"><strong>Difference: </strong><?= number_format($priceDifference, 0) ?>%</p>
 
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exchangeModal" data-item-id="<?= esc($item['id']) ?>">
                                 Propose an Exchange
@@ -32,7 +32,7 @@
     <?php endif; ?>
 </div>
 
-<!-- Modal d'échange -->
+<!-- Modal for proposing an exchange -->
 <div class="modal fade" id="exchangeModal" tabindex="-1" aria-labelledby="exchangeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit Exchange</button>
+                    <button type="submit" class="btn btn-success">Submit Exchange</button>
                 </div>
             </form>
         </div>
@@ -75,5 +75,64 @@
         modalInput.value = itemId;
     });
 </script>
+
+<style>
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-title {
+        font-weight: bold;
+        color: #343a40;
+    }
+
+    .card-text strong {
+        font-weight: bold;
+        color: #2e4b9c;
+    }
+
+    .price-difference {
+        color: #28a745;
+        font-weight: bold;
+    }
+
+    .btn-primary {
+        background-color: #2e4b9c;
+        border: none;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #2e4b9c;
+    }
+
+    .modal-body .form-label {
+        font-weight: bold;
+    }
+   .card:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-body select, .modal-body textarea {
+        margin-bottom: 15px;
+    }
+
+    .modal-footer button {
+        background-color: #2e4b9c;
+        color: white;
+    }
+
+    .modal-footer button:hover {
+        background-color: #2e4b9c;
+    }
+</style>
 
 <?= $this->endSection(); ?>

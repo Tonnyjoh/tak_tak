@@ -2,28 +2,30 @@
 
 <?= $this->section('content') ?>
 
-<div class="container">
-    <div class="card">
-        <h2 class="text-center card-title">Edit User</h2>
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h3 class="text-prima mb-4"><strong><span class="prima">Edit</span> User</strong></h3>
 
-        <?php echo \Config\Services::validation()->listErrors(); ?>
+        <?= \Config\Services::validation()->listErrors(); ?>
 
-        <form action="<?= site_url('admin/update/' . $user['id']) ?>" method="post" class="form mt-4">
+        <form action="<?= site_url('admin/update/' . $user['id']) ?>" method="post" class="row g-3">
             <?= csrf_field() ?>
 
-            <div class="form-group">
-                <label for="username">Name</label>
+            <div class="col-md-12">
+                <label for="username" class="form-label">Name:</label>
                 <input type="text" id="username" class="form-control" name="username"
-                    value="<?php echo esc($user['username']); ?>" placeholder="Username" />
+                       value="<?= esc($user['username']); ?>" placeholder="Username" required />
             </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email:</label>
                 <input type="email" id="email" class="form-control" name="email"
-                    value="<?php echo esc($user['email']); ?>" placeholder="Email Address" />
+                       value="<?= esc($user['email']); ?>" placeholder="Email Address" required />
             </div>
 
-            <button type="submit" class="button frm btn-modifier btn-block mt-3">Update</button>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary mt-3">Update</button>
+            </div>
         </form>
     </div>
 </div>

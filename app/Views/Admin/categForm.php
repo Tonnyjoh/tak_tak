@@ -2,23 +2,23 @@
 
 <?= $this->section('content') ?>
 
-    <div class="container">
-        <div class="card">
-            <h2 class="text-center card-title">Create category</h2>
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h3 class="text-prima mb-4"><strong><span class="prima">Create</span> Category</strong></h3>
+        <?= \Config\Services::validation()->listErrors(); ?>
+        <form action="<?= site_url('admin/createCateg/') ?>" method="post" class="row g-3">
+            <?= csrf_field() ?>
 
-            <?php echo \Config\Services::validation()->listErrors(); ?>
+            <div class="col-md-12">
+                <label for="name" class="form-label">Category Name:</label>
+                <input required type="text" id="name" class="form-control" name="name" placeholder="Enter category name" />
+            </div>
 
-            <form action="<?= site_url('admin/createCateg/') ?>" method="post" class="form mt-4">
-                <?= csrf_field() ?>
-
-                <div class="form-group">
-                    <label for="name">Category</label>
-                    <input required type="text" id="name" class="form-control" name="name"/>
-                </div>
-
-                <button type="submit" class="button frm btn-modifier btn-block mt-3">Create</button>
-            </form>
-        </div>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary mt-3">Create</button>
+            </div>
+        </form>
     </div>
+</div>
 
 <?= $this->endSection() ?>

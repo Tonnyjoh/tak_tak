@@ -4,17 +4,13 @@ body {
     padding: 20px;
     background-color: #f7f7f7;
 }
-
-.container {
-    margin-left: 0;
-}
-
 .card {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    height: 100%;
 }
 .capitalize{
     text-transform: capitalize;
@@ -136,7 +132,6 @@ img.img-fluid {
 .exchanges-container,
 .items-container,
 .info-container {
-    width: 135%;
     background-color: white;
     padding: 30px;
     border-radius: 10px;

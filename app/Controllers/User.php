@@ -76,7 +76,7 @@ class User extends BaseController
             "password"=>password_hash($this->request->getPost("password"), PASSWORD_DEFAULT),
         ];
         $userModel->update($id,$dataUser);
-        return redirect()->to('/user/dashboard');
+        return redirect()->to('/user/dashboard')->with('success',"Updated successfully");
     }
 
 }

@@ -15,7 +15,7 @@
     </div>
 <?php endif; ?>
 
-<div class="container position-relative bg-container">
+<div class="position-relative bg-container">
     <?php if (session()->get("role") == 'client'): ?>
         <!-- Section des items -->
         <div id="sectionone" class="mb-4">
@@ -165,52 +165,115 @@
         <!-- Liste des utilisateurs pour l'admin -->
         <div class="containeradmin mb-4">
             <a href="<?= base_url('/admin/getFormCateg') ?>" class="btn btn-primary mb-3">Create category</a>
-            <div id="sectionone" class="card shadow">
-                <h2 class="text-center card-title">User List</h2>
-                <table class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php if (!empty($users) && is_array($users)): ?>
-                        <?php foreach ($users as $user): ?>
-                            <tr>
-                                <td><?= esc($user->id) ?></td>
-                                <td><?= esc($user->username) ?></td>
-                                <td><?= esc($user->email) ?></td>
-                                <td>
-                                    <a href="<?= site_url('admin/edit/' . $user->id); ?>" class="btn btn-secondary">Edit</a>
-                                    <a href="<?= site_url('admin/delete/' . $user->id); ?>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+
+            <!-- Table des utilisateurs -->
+            <div id="sectionone" class="card shadow-sm">
+                <h2 class="text-center card-title py-3">User List</h2>
+                <div class="table-responsive">
+                    <table class="table table-borderless align-middle">
+                        <thead class="table-light">
                         <tr>
-                            <td colspan="4" class="text-center">No users found.</td>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Actions</th>
                         </tr>
-                    <?php endif; ?>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="statistics mb-4">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h2 class="card-title">Dashboard Statistics</h2>
-                        <p><strong>Total Non-Admin Users:</strong> <?= esc($user_count) ?></p>
-                        <p><strong>Total Registered Users:</strong> <?= esc($statistics[0]->user_count) ?></p>
-                        <p><strong>Total Exchanges Conducted:</strong> <?= esc($statistics[0]->exchange_count) ?></p>
-
-                    </div>
+                        </thead>
+                        <tbody>
+                        <?php if (!empty($users) && is_array($users)): ?>
+                            <?php foreach ($users as $user): ?>
+                                <tr class="border-bottom">
+                                    <td><?= esc($user->id) ?></td>
+                                    <td><?= esc($user->username) ?></td>
+                                    <td><?= esc($user->email) ?></td>
+                                    <td>
+                                        <div class="d-flex justify-content-start gap-2">
+                                            <a href="<?= site_url('admin/edit/' . $user->id); ?>" class="btn btn-secondary btn-sm">Edit</a>
+                                            <a href="<?= site_url('admin/delete/' . $user->id); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="4" class="text-center">No users found.</td>
+                            </tr>
+                        <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
+            <!-- Section statistiques -->
+            <div class="statistics mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title">Dashboard Statistics</h2>
+                        <p><strong class="text-primary">Total Non-Admin Users:</strong> <?= esc($user_count) ?></p>
+                        <p><strong class="text-success">Total Registered Users:</strong> <?= esc($statistics[0]->user_count) ?></p>
+                        <p><strong class="text-info">Total Exchanges Conducted:</strong> <?= esc($statistics[0]->exchange_count) ?></p>
+                    </div>
+                </div>
+            </div>
         </div>
+
     <?php endif; ?>
 </div>
+<style>
+    .card {
+        border-radius: 0.5rem;
+        background-color: #ffffff;
+        padding: 1rem;
+    }
+
+    .table-borderless th {
+        font-weight: 600;
+        color: #495057;
+        border-bottom: none;
+    }
+
+    .table-borderless td {
+        padding: 1rem;
+        border-bottom: none;
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid #e9ecef !important;
+    }
+
+    .btn-sm {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.875rem;
+    }
+
+    .containeradmin {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 0.5rem;
+    }
+
+    .table-responsive {
+        margin-bottom: 1rem;
+    }
+
+    .d-flex.gap-2 {
+        gap: 0.5rem;
+    }
+
+    .statistics p {
+        font-size: 1.1rem;
+    }
+
+    .statistics .text-primary {
+        color: #007bff;
+    }
+
+    .statistics .text-success {
+        color: #28a745;
+    }
+
+    .statistics .text-info {
+        color: #17a2b8;
+    }
+</style>
 <?= $this->endSection() ?>
