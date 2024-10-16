@@ -2,24 +2,29 @@
 
 <?= $this->section('content') ?>
 
-<div class="container">
-    <div class="card">
-        <h2 class="text-center card-title">Update User</h2>
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h3 class="text-prima mb-4"><strong><span class="prima">Update</span> User</strong></h3>
 
-        <?php echo \Config\Services::validation()->listErrors(); ?>
+        <?= \Config\Services::validation()->listErrors(); ?>
 
-        <form action="<?= site_url('user/update/') ?>" method="post" class="form mt-4">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" value="<?php echo $user['email']; ?>" />
+        <form action="<?= site_url('user/update/') ?>" method="post" class="row g-3">
+            <?= csrf_field() ?>
+
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" name="email"
+                       value="<?= esc($user['email']); ?>" placeholder="Enter your email" required />
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" />
+            <div class="col-md-12">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter a new password" />
             </div>
 
-            <button type="submit" class="button frm btn-modifier btn-block mt-3">Update</button>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary mt-3">Update</button>
+            </div>
         </form>
     </div>
 </div>

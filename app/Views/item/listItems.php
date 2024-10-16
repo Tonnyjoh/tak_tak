@@ -2,57 +2,121 @@
 
 <?= $this->section('content'); ?>
 
-<div class="container mt-4">
-    <h2 class="text-center mb-4">Available Items for Exchange</h2>
+<style>
+    .highlight-btn {
+        background-color: #2e4b9c;
+        border-color: #2e4b9c;
+        color: #fff;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-    <form action="<?= site_url('item/filterListItems') ?>" method="post" class="mb-4">
+    .highlight-btn:hover {
+        background-color: #2980b9;
+    }
+
+    .highlight-card {
+        border: 1px solid #f0f0f0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .highlight-card:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight-image {
+        border-bottom: 4px solid #2e4b9c;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .highlight-image:hover {
+        transform: scale(1.03);
+    }
+
+    .highlight-title {
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    .highlight-price {
+        color: #e74c3c;
+        font-weight: bold;
+    }
+
+    .search-container {
+        background-color: #f5f5f5;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+
+    .btn-secondary {
+        background-color: #95a5a6;
+    }
+
+    .modal-title {
+        color: #2e4b9c;
+    }
+
+    .form-select, .form-control {
+        border-radius: 6px;
+    }
+
+    .modal-dialog {
+        max-width: 500px;
+    }
+</style>
+
+<div class="container-list-item mt-4">
+    <h2 class="text-center mb-4">Available Items for Exchange</h2>
+    <!-- Search Form -->
+    <form action="<?= site_url('item/filterListItems') ?>" method="post" class="search-container">
         <div class="row">
             <div class="col-md-4">
                 <select name="category" class="form-select">
                     <option value="">-- All Categories --</option>
                     <?php foreach ($categories as $category) : ?>
-                        <option value="<?=$category['id'] ?>" <?= set_select('category', 'category1', $category == $category['name'] ) ?>><?=$category['name'] ?></option>
-                    <?php endforeach;?>
+                        <option value="<?= esc($category['id']) ?>" <?= set_select('category', 'category1', $category == $category['name']) ?>>
+                            <?= esc($category['name']) ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="col-md-6">
                 <input type="text" name="keywords" class="form-control" placeholder="Enter keywords" value="">
             </div>
             <div class="col-md-2">
-                <button type="submit" class="btn btn-primary w-100">Search</button>
+                <button type="submit" class="btn highlight-btn w-100">Search</button>
             </div>
         </div>
     </form>
 
-    <!-- Liste des articles -->
+    <!-- Item Cards -->
     <?php if (!empty($items) && is_array($items)): ?>
         <div class="row">
             <?php foreach ($items as $item): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
+                <div class="col-md-3 mb-4">
+                    <div class="card highlight-card">
                         <?php if (!empty($item->photos)): ?>
-                            <?php
-                            $photos = explode(',', $item->photos);
-                            $mainPhoto = $photos[0];
-                            ?>
-                            <img src="<?= base_url('uploads/' . $mainPhoto) ?>" class="card-img-top img-fluid" alt="<?= esc($item->title) ?>" style="height: 250px; object-fit: cover;">
+                            <?php $photos = explode(',', $item->photos); $mainPhoto = $photos[0]; ?>
+                            <img src="<?= base_url('uploads/' . $mainPhoto) ?>" class="card-img-top highlight-image img-fluid" alt="<?= esc($item->title) ?>" style="height: 250px;">
                         <?php else: ?>
-                            <img src="<?= base_url('uploads/default.png') ?>" class="card-img-top img-fluid" alt="No image available" style="height: 250px; object-fit: cover;">
+                            <img src="<?= base_url('uploads/default.png') ?>" class="card-img-top highlight-image img-fluid" alt="No image available" style="height: 250px;">
                         <?php endif; ?>
 
                         <div class="card-body">
-                            <h5 class="card-title"><?= esc($item->title) ?></h5>
+                            <h5 class="card-title highlight-title"><?= esc($item->title) ?></h5>
                             <p class="card-text"><?= esc($item->description) ?></p>
-                            <p class="card-text"><strong>Price: </strong><?= esc($item->estimated_price) ?> Ar</p>
+                            <p class="card-text"><span class="highlight-price">Price:</span> <?= esc($item->estimated_price) ?> Ar</p>
 
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exchangeModal" data-item-id="<?= $item->id ?>">
+                            <button type="button" class="btn highlight-btn" data-bs-toggle="modal" data-bs-target="#exchangeModal" data-item-id="<?= esc($item->id) ?>">
                                 Propose an Exchange
                             </button>
-                            <form method="post" action="<?=base_url('item/history')?>">
-                                <input name="item_id" type="hidden" value="<?= $item->id?>">
-                                <button class="btn btn-secondary mt-2">View history</button>
+                            <form method="post" action="<?= base_url('item/history') ?>">
+                                <input name="item_id" type="hidden" value="<?= esc($item->id) ?>">
+                                <button class="btn btn-secondary mt-2 w-100">View History</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -63,7 +127,7 @@
     <?php endif; ?>
 </div>
 
-<!-- Modal d'échange -->
+<!-- Exchange Modal -->
 <div class="modal fade" id="exchangeModal" tabindex="-1" aria-labelledby="exchangeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -89,19 +153,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Submit Exchange</button>
+                    <button type="submit" class="btn highlight-btn">Submit Exchange</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+<!-- Modal Data Script -->
 <script>
     const exchangeModal = document.getElementById('exchangeModal');
     exchangeModal.addEventListener('show.bs.modal', function (event) {
         const button = event.relatedTarget;
         const itemId = button.getAttribute('data-item-id');
-
         const modalInput = exchangeModal.querySelector('#requestedItemId');
         modalInput.value = itemId;
     });

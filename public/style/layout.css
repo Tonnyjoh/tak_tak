@@ -123,7 +123,6 @@ body, html {
   margin-left: 80px;
   transition: margin-left 0.3s ease;
   position: relative;
-  overflow: scroll;
 }
 
 .sidebar.open ~ .main-contentEdit-wrapper {
@@ -138,3 +137,12 @@ body, html {
   width: 100%;
   text-align: center;
 }
+/*Style touche kely*/
+.prima{
+  color: #374151;
+}
+.text-prima{
+  color: #2e4b9c;
+}
+
+
