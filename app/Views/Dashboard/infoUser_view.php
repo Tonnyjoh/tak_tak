@@ -8,14 +8,14 @@
             <i class="fas fa-user"></i> Profil
         </button>
         <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-            <p><strong>Name:</strong> <?= esc($user['username']) ?></p>
-            <p><strong>Email:</strong> <?= esc($user['email']) ?></p>
+            <p><span class="miavaka">Name:</span> <?= esc($user['username']) ?></p>
+            <p><span class="miavaka">Email:</span> <?= esc($user['email']) ?></p>
             <li><a class="dropdown-item" href="<?= site_url('user/edit/'); ?>">Edit Profile</a></li>
         </ul>
     </div>
 <?php endif; ?>
 
-<div class="container position-relative bg-container"> <!-- New background class -->
+<div class="container position-relative bg-container">
     <?php if (session()->get("role") == 'client'): ?>
         <!-- Section des items -->
         <div id="sectionone" class="mb-4">
@@ -42,11 +42,11 @@
                                             $firstPhoto = !empty($photos[0]) ? $photos[0] : '8399758.jpg';
                                             ?>
                                             <img src="<?= base_url('uploads/' . $firstPhoto) ?>" class="img-fluid" alt="<?= esc($item->title) ?>">
-                                            <span><?= esc($item->title) ?></span>
+                                            <span class="capitalize"><?= esc($item->title) ?></span>
                                         </div>
                                     </td>
                                     <td><?= esc($item->description) ?></td>
-                                    <td><?= esc($item->estimated_price) ?></td>
+                                    <td><?= esc($item->estimated_price) ?> Ar</td>
                                     <td>
                                         <div class="actions">
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#itemModal-<?= esc($item->id) ?>">
@@ -79,13 +79,13 @@
                                 <div class="modal fade" id="itemModal-<?= esc($item->id) ?>" tabindex="-1" aria-labelledby="itemModalLabel-<?= esc($item->id) ?>" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
-                                            <div class="modal-header">
+                                            <div class="modal-header capitalize">
                                                 <h5 class="modal-title" id="itemModalLabel-<?= esc($item->id) ?>"><?= esc($item->title) ?></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p><strong>Description:</strong> <?= esc($item->description) ?></p>
-                                                <p><strong>Price:</strong> <?= esc($item->estimated_price) ?></p>
+                                                <p><span class="miavaka">Description:</span> <?= esc($item->description) ?></p>
+                                                <p><span class="miavaka">Price:</span> <?= esc($item->estimated_price) ?> Ar</p>
                                                 <?php foreach ($photos as $photo): ?>
                                                     <img src="<?= base_url('uploads/' . $photo) ?>" class="img-fluid mb-2" alt="Item photo">
                                                 <?php endforeach; ?>
@@ -125,11 +125,15 @@
                     <tbody>
                     <?php foreach ($exchanges as $exchange): ?>
                         <tr>
-                            <td><?= esc($exchange->offered_item_title) ?></td>
-                            <td><?= esc($exchange->requested_item_title) ?></td>
+                            <td class="capitalize"><?= esc($exchange->offered_item_title) ?></td>
+                            <td class="capitalize"><?= esc($exchange->requested_item_title) ?></td>
                             <td><?= esc($exchange->recipient_name) ?></td>
                             <td><?= esc($exchange->exchange_date) ?></td>
-                            <td class="type holiday"><?= esc($exchange->status) ?></td>
+                            <td>
+                                <span  class="type <?= $exchange->status == 'accepted' ? 'holiday' : 'unpaid-leave' ?>">
+                                <?= esc($exchange->status) ?>
+                                </span>
+                            </td>
                             <td>
                                 <?php if ($exchange->status === 'accepted'): ?>
                                     <span class="text-success">Already Accepted</span>
