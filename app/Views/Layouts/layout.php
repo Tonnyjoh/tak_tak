@@ -18,7 +18,7 @@
 <div class="sidebar-wrapper">
     <div class="sidebar" id="sidebar">
         <div class="profile">
-            <img src="<?= base_url("/tonnyjohmascotte.png") ?>" alt="profile pic">
+            <img src="<?= base_url("/assets/img/taktak.jpg") ?>" alt="profile pic">
             <span><?= esc(session()->get('name')) ?></span>
         </div>
         <div class="indicator" id="indicator"></div>

@@ -64,7 +64,7 @@ class  Auth extends BaseController
     public function logout(): \CodeIgniter\HTTP\RedirectResponse
     {
         session()->destroy();
-        return redirect()->to('auth/login')->with('success', 'Vous avez été déconnecté.');
+        return redirect()->to('/')->with('success', 'Vous avez été déconnecté.');
     }
 
 
