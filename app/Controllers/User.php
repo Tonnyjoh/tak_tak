@@ -15,7 +15,7 @@ class User extends BaseController
         }elseif (session()->get('isLoggedIn') && session()->get('role')=='admin') {
             return redirect()->to('/admin/dashboard');
         }
-        return redirect()->to('/auth/login');
+        return redirect()->to('/home');
     }
 
     public function dash(): string
