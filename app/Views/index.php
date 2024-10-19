@@ -9,7 +9,6 @@
 
   <!-- Favicons -->
   <link href="<?=site_url('assets/img/taktak.png')?>" rel="icon">
-  <link href="<?=site_url('assets/img/apple-touch-icon.png')?>" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
