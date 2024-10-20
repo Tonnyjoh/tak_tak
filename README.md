@@ -30,4 +30,10 @@
   ```plaintext
     $dbname = 'takalo_takalo';  // Base de données à utiliser
     $username = 'root';         // Nom d'utilisateur
-    $password = '';             // Votre mot de passe
+    $password = '';             // Votre mot de pass
+
+### Capture d'écran 1
+<img src="/public/takone.png" alt="Capture d'écran 1" width="300"/>
+
+### Capture d'écran 2
+<img src="/public/taktwo.png" alt="Capture d'écran 2" width="300"/>
