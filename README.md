@@ -11,7 +11,7 @@
 ### Informations de Connexion
 - **Superuser**:
     - Email: `root@admin.com`
-    - Mot de passe: `123456789`
+    - Mot de passe: `superuser`
 
 - **Utilisateur 1**:
     - Email: `rabe@test.com`
@@ -24,7 +24,7 @@
 - **Utilisateur 3**:
     - Email: `ampela@gmail.com`
     - Mot de passe: `123456789`
-
+### Une connexion à internet est requise 
 ### Configuration de la Base de Données
 1. Importez le fichier SQL situé dans le dossier `public` pour créer la base de données et les tables nécessaires.
 2. Mettez à jour le fichier `.env` dans le répertoire racine :
