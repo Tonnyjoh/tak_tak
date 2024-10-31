@@ -4,10 +4,10 @@ Application d'échange développée avec CodeIgniter 4 Framework
 
 ## Captures d'écran
 ### Interface principale
-<img src="/public/takone.png" alt="Capture d'écran 1" width="300"/>
+<img src="/public/takone.png" alt="Capture d'écran 1" width="1920"/>
 
 ### Tableau de bord
-<img src="/public/taktwo.png" alt="Capture d'écran 2" width="300"/>
+<img src="/public/taktwo.png" alt="Capture d'écran 2" width="1920"/>
 
 ## Prérequis
 - Une connexion Internet est requise
