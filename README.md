@@ -51,14 +51,3 @@ Application d'échange développée avec CodeIgniter 4 Framework
    - Email: `ampela@gmail.com`
    - Mot de passe: `123456789`
 
-## Contributeurs
-- RAJAOHARIVONY Haritody Tonny Raldo (ESIIA3A- №01)
-- RAMESON ANDRIANARINOSY Imanoela Fiderana Ny Avo (ESIIA3A - №03)
-- ANDRIAMANARINTSOA Hugues Steeven (ESIIA3A - №25)
-- RALIJEMISON STEPHAN Ambinitsoa (ESIIA3A - №26)
-- RAHARISON Santatriniaina Tiantsoa (ESIIA3A - №28)
-- RAKOTOMANANA HARILALA Najaina Rotsiniaina (ESIIA3A - №40)
-- TANG FAKANAH Randy (ESIIA3A - №41)
-- RANDRIAMAEFAMANANA Rojotiana (ESIIA3A - №46)
-- RANAIVOSON Mamisedra Hariniaina (ESIIA3B - №11)
-- RAKANDRAINA Tojotiana (ESIIA3B - №13)
